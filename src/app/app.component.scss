@@ -1,0 +1,40 @@
+.container {
+    margin: 48px 35%;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   
+  .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    background-color: darkslategray;
+    padding: 30px 60px;
+    margin-top: 40px;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  }
+
+   
+  .link {
+    color: white;
+    text-decoration: none;
+    font-size: 18pt;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+
+  button {
+    background-color: black;
+    padding: 4px 8px;
+    cursor: pointer;
+  }
+
+ 
