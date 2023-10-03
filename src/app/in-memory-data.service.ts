@@ -7,9 +7,10 @@ import{HttpClient} from '@angular/common/http';
 })
 export class InMemoryDataService{
 
-  constructor(private http:HttpClient) { }
+  /* constructor(private http:HttpClient) { }
 
   IskanjeImen(){
-    
-  }
+    let url="https://api4.allhours.com/api/v1/Users";
+    return this.http.get(url);
+  } */
 }

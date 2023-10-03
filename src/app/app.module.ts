@@ -8,6 +8,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { UsersComponent } from './users/users.component';
 import { AbsencesComponent } from './absences/absences.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserGridComponent } from './user-grid/user-grid.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SettingsComponent,
     UsersComponent,
-    AbsencesComponent
+    AbsencesComponent,
+    UserGridComponent
   ],
   imports: [
     BrowserModule,
