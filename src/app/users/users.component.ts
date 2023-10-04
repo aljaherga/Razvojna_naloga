@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { TokenService } from '../token.service';
 import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,8 +18,19 @@ export class UsersComponent implements OnInit{
 
   users: any[] = [];
 
+  personForm: FormGroup;
+
   constructor(private http: HttpClient,
-    private tokenService: TokenService) {}
+    private tokenService: TokenService,
+    private userService: UserService,
+    private fb: FormBuilder) {
+      this.personForm = this.fb.group({
+        firstName: ['', Validators.required], 
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]]  
+        
+      });
+    }
 
   ngOnInit(): void{
     const token = this.tokenService.getToken();
@@ -82,5 +94,25 @@ export class UsersComponent implements OnInit{
     
   } 
   
+  addPerson(personData: any): void{
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    this.http.post('https://api4.allhours.com/api/v1/Users', personData, { headers }).subscribe(
+      (response) => {
+        console.log('Person added successfully:', response);
+
+      },
+      (error) => {
+        console.error('Error adding person:', error);
+      }
+      );
+  }
+
+  
+  
+
 }
 

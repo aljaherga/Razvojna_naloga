@@ -5,9 +5,8 @@
     
     
     <div class="card">
-
       <div>
-        <h5>Pregled vseh uporabnikov v gridu:</h5>
+        <h4>Pregled vseh uporabnikov v gridu:</h4>
         <button (click)="ngOnInit()">Preglej uporabnike</button>
         <button (click)="toggleResponseVisibility()">Pokaži / Skrij</button>
         <ng-container *ngIf="showResponseData">
@@ -17,32 +16,41 @@
           <p>Error loading data.</p>
         </ng-template>
       </div>
-
     </div>
 
 
     <div class="card">
-
       <div>
-        <h5>Iskanje uporabnika:</h5>
+        <h4>Iskanje uporabnika:</h4>
 
-        <input type="text" [(ngModel)]="searchFirstName" placeholder="First Name">
-        <input type="text" [(ngModel)]="searchLastName" placeholder="Last Name">
+        <input type="text" [(ngModel)]="searchFirstName" placeholder="Ime">
+        <input type="text" [(ngModel)]="searchLastName" placeholder="Priimek">
         <button (click)="startSearch()">Išči</button>
         <div *ngIf="displayDetails">
           <p><strong>ID:</strong> {{ userDetails.Id }}</p>
-          <p><strong>First Name:</strong> {{ userDetails.FirstName }}</p>
-          <p><strong>Last Name:</strong> {{ userDetails.LastName }}</p>
-          <p><strong>Full Name:</strong> {{ userDetails.FullName }}</p>
+          <p><strong>Ime:</strong> {{ userDetails.FirstName }}</p>
+          <p><strong>Priimek:</strong> {{ userDetails.LastName }}</p>
+          <p><strong>Celo ime:</strong> {{ userDetails.FullName }}</p>
           <p><strong>Email:</strong> {{ userDetails.Email }}</p>
           
         </div>
-        
-
       </div>
-
     </div>
     
+
+
+    <div class="card">
+      <div>
+        <form [formGroup]="personForm" (ngSubmit)="addPerson(personForm.value)">
+          <h4>Dodajanje uporabnika:</h4> 
+          <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="Ime">
+          <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="Priimek">
+          <input type="text" id="email" name="email" formControlName="email" placeholder="Email">
+          <button type="submit">Dodaj osebo</button>
+        </form>
+      </div>
+    </div>
+
 
     
 </div>

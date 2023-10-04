@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { AbsencesComponent } from './absences/absences.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserGridComponent } from './user-grid/user-grid.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserGridComponent } from './user-grid/user-grid.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
