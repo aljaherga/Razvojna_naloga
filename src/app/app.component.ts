@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from '@angular/router'; 
 import {InMemoryDataService} from './in-memory-data.service'
 import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { BehaviorSubject } from 'rxjs';
+import { TokenService } from './token.service';
 
 
 @Component({
@@ -16,10 +19,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 export class AppComponent implements OnInit {
   title = 'razvojna-app';
   
-  constructor(private router: Router, private http: HttpClient) {}
+
+
+  constructor(private router: Router, private http: HttpClient, private tokenService: TokenService) {}
   
   clients = [];
   
+  
+
   ngOnInit() {
 
     const savedData = localStorage.getItem('users');
@@ -52,8 +59,15 @@ export class AppComponent implements OnInit {
         console.log(data);
         var token = data.access_token;
         console.log(token);
+
+
+        this.tokenService.setToken(data.access_token);
+        
     });
   }
+  
+  
+
   } 
 
 

@@ -3,36 +3,49 @@
 <div class="content">
     <h2> Pregled uporabnikov </h2>
     
+    
     <div class="card">
-      <h4> Naslov 1 </h4>
-      <p> opis 1</p>
+
+      <div>
+        <h5>Pregled vseh uporabnikov v gridu:</h5>
+        <button (click)="ngOnInit()">Preglej uporabnike</button>
+        <button (click)="toggleResponseVisibility()">Pokaži / Skrij</button>
+        <ng-container *ngIf="showResponseData">
+          <p>{{ apiResponseData | json }}</p>
+        </ng-container>
+        <ng-template #loadingError>
+          <p>Error loading data.</p>
+        </ng-template>
+      </div>
+
     </div>
+
+
     <div class="card">
-      <h4> Naslov 2 </h4>
-      <p> opis 2 </p>
+
+      <div>
+        <h5>Iskanje uporabnika:</h5>
+
+        <input type="text" [(ngModel)]="searchFirstName" placeholder="First Name">
+        <input type="text" [(ngModel)]="searchLastName" placeholder="Last Name">
+        <button (click)="startSearch()">Išči</button>
+        <div *ngIf="displayDetails">
+          <p><strong>ID:</strong> {{ userDetails.Id }}</p>
+          <p><strong>First Name:</strong> {{ userDetails.FirstName }}</p>
+          <p><strong>Last Name:</strong> {{ userDetails.LastName }}</p>
+          <p><strong>Full Name:</strong> {{ userDetails.FullName }}</p>
+          <p><strong>Email:</strong> {{ userDetails.Email }}</p>
+          
+        </div>
+        
+
+      </div>
+
     </div>
+    
+
+    
 </div>
 
 
 
-<!-- 
-<div class="user-grid">
-  <table>
-    <thead>
-      <tr>
-        <th>Ime</th>
-        <th>Priimek</th>
-        <!-- Add more columns as needed -->
-      <!-- </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>{{ user.ime }}</td>
-        <td>{{ user.priimek }}</td>
-        <!-- Display additional user data here -->
-      <!-- </tr>
-    </tbody>
-  </table>
-</div>
-
-<app-user-grid></app-user-grid> --> --> -->
