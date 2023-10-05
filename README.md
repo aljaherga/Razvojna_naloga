@@ -1,5 +1,12 @@
 # RazvojnaApp
 
+## Nastavitev projekta v lokalnem okolju
+1. kloniraj projekt v mapo na računalniku
+2. navigiraj do projektne mape v terminalu
+3. poženi `npm install`
+4. poženi `npm run start`
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
 ## Development server
