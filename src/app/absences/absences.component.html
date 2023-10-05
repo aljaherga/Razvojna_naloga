@@ -1,1 +1,15 @@
-<p>absences works!</p>
+
+<h1>Odsotnosti</h1>
+
+<div class="card">
+  <p>Označite dan odsotnosti oseb</p>
+  <label for="datePicker">Izberi dan:</label> &nbsp;
+  <input type="date" id="datePicker" [(ngModel)]="selectedDate">
+  <button (click)="searchAbsentPeople()">Izberi</button>
+  <p><b>Odsotni ta dan:</b></p>
+  <li *ngFor="let person of absentPeople">
+    {{ person.FirstName }}
+        {{ person.LastName }} , &nbsp;
+        Razlog:{{ person.Reason }} <br>
+  </li>   
+</div>

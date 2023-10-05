@@ -6,22 +6,29 @@
     
     <div class="card">
       <div>
-        <h4>Pregled vseh uporabnikov v gridu:</h4>
-        <button (click)="ngOnInit()">Preglej uporabnike</button>
-        <button (click)="toggleResponseVisibility()">Pokaži / Skrij</button>
+        <button class="naslovGumb" (click)="OneVisibility(); AllOfTheUsers(true)">Pregled vseh uporabnikov:</button>
+        <div *ngIf="OneisHidden">
+        <h4>Vsi uporabniki:</h4>
         <ng-container *ngIf="showResponseData">
-          <p>{{ apiResponseData | json }}</p>
+          <tr *ngFor="let user of allUsers">
+            <td class="imena"> {{ user.FirstName }} {{ user.LastName }}</td>
+          </tr>
         </ng-container>
         <ng-template #loadingError>
           <p>Error loading data.</p>
         </ng-template>
       </div>
+      </div>
     </div>
+
+    
 
 
     <div class="card">
       <div>
-        <h4>Iskanje uporabnika:</h4>
+        <button class="naslovGumb" (click)="TwoVisibility(); AllAbsences(); AllOfTheUsers(false)">Iskanje uporabnika:</button>
+        <div *ngIf="TwoisHidden">
+        <h4>Poišči uporabnika:</h4>
 
         <input type="text" [(ngModel)]="searchFirstName" placeholder="Ime">
         <input type="text" [(ngModel)]="searchLastName" placeholder="Priimek">
@@ -32,7 +39,7 @@
           <p><strong>Priimek:</strong> {{ userDetails.LastName }}</p>
           <p><strong>Celo ime:</strong> {{ userDetails.FullName }}</p>
           <p><strong>Email:</strong> {{ userDetails.Email }}</p>
-          
+        </div>
         </div>
       </div>
     </div>
@@ -41,18 +48,52 @@
 
     <div class="card">
       <div>
+        <button class="naslovGumb" (click)="ThreeVisibility(); AllAbsences();">Dodajanje uporabnika:</button>
+        <div *ngIf="ThreeisHidden">
         <form [formGroup]="personForm" (ngSubmit)="addPerson(personForm.value)">
-          <h4>Dodajanje uporabnika:</h4> 
+          <h4>Dodaj uporabnika:</h4> 
           <input type="text" id="firstName" name="firstName" formControlName="firstName" placeholder="Ime">
           <input type="text" id="lastName" name="lastName" formControlName="lastName" placeholder="Priimek">
           <input type="text" id="email" name="email" formControlName="email" placeholder="Email">
           <button type="submit">Dodaj osebo</button>
         </form>
       </div>
+      </div>
     </div>
 
 
+
+
+
+    <div class="card">
+      <div>
+        <button class="naslovGumb" (click)="FourVisibility(); AllAbsences();">Dodajanje odsotnosti:</button>
+        <div *ngIf="FourisHidden">
+        <h4>Dodaj odsotnost:</h4>
+
+        <form  (ngSubmit)="onSubmit()">
+         
+          <input type="text" id="userid" name="userid" [(ngModel)]="userId" placeholder="Id" [ngModelOptions]="{standalone: true}">
+
+            <label for="from">Od:</label>
+            <input type="date" id="from" name="from" [(ngModel)]="fromDate" [ngModelOptions]="{standalone: true}">
+            
+            <label for="to">Do:</label>
+            <input type="date" id="to" name="to" [(ngModel)]="toDate" [ngModelOptions]="{standalone: true}">
+            
+            <select [(ngModel)]="selectedName" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let option of twoResponseData" placeholder="Razlog" [value]="option.Id">{{ option.Name }}</option>
+            </select>
+
+          <button type="submit">Dodaj odsotnost</button>
+        </form>
+        </div> 
+      </div>
+    </div>
     
+
+
+
 </div>
 
 

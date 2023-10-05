@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     const savedData = localStorage.getItem('users');
-    /* console.log(savedData); */ 
     
     if (savedData) {
       const data = JSON.parse(savedData);
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit {
     else {
       this.clients = [];
     } 
-    /* console.log(this.clients); */
     
 
 
@@ -51,22 +49,15 @@ export class AppComponent implements OnInit {
     
     const body = 
     `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}&scope=api`;
-    /* `grant_type=client_credentials&client_id=gNa0rGEkFYcBrU8qAevzCzPZe&client_secret=ia1QN38I0TMMX1BdZ3yKhSVswtXCzxqP5UTNpgOzlxJBvCui5z&scope=api` */
     
     this.http.post<any>('https://login.allhours.com/connect/token', body,{
       headers: headers,
     }).subscribe(data=> {
-        console.log(data);
         var token = data.access_token;
-        console.log(token);
-
-
         this.tokenService.setToken(data.access_token);
         
     });
   }
-  
-  
 
   } 
 
