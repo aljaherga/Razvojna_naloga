@@ -6,6 +6,7 @@
   <label for="datePicker">Izberi dan:</label> &nbsp;
   <input type="date" id="datePicker" [(ngModel)]="selectedDate">
   <button (click)="searchAbsentPeople()">Izberi</button>
+  <button (click)="searchAbsentPeople()">Osveži</button>
   <p><b>Odsotni ta dan:</b></p>
   <li *ngFor="let person of absentPeople">
     {{ person.FirstName }}
